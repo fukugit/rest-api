@@ -36,9 +36,16 @@
         </dependency>
     </dependencies>
 
-    <!-- Package as an executable jar -->
     <build>
         <plugins>
+            <!--  -->
+            <!--
+              jarファイルを作成するためのプラグインです。
+              1 : 下記のmavenコマンドでjarを作成します。
+                  mvn clean package spring-boot:repackage
+              2: 下記のコマンドでjarを起動します。(その後ブラウザで"localhost:8080"へアクセスできるようになります。)
+                 java -jar rest-api-1.0-SNAPSHOT.jar
+            -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

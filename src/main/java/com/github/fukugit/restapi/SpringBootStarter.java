@@ -1,5 +1,6 @@
 package com.github.fukugit.restapi;
 
+import com.github.fukugit.restapi.listener.SampleApplicationStartedEvent;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -21,8 +22,12 @@ public class SpringBootStarter {
     // Builderパターンで設定可能です。
     // https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/html/spring-boot-features.html#boot-features-fluent-builder-api
     new SpringApplicationBuilder()
+      .listeners()
       .sources(SpringBootStarter.class)
       .bannerMode(Banner.Mode.CONSOLE)
+      // リスナーの登録です。
+      // https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/html/spring-boot-features.html#boot-features-application-events-and-listeners
+      .listeners(new SampleApplicationStartedEvent())
       .run(args);
   }
 }
