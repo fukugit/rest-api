@@ -1,0 +1,7 @@
+spring:
+  main:
+    # ここをTrueにすると@Autowiredでコンポーネント化できなくてもSpring Boot自体は立ち上がります。
+    # どこでエラーになるかというと、コンポーネント化されていないメンバ変数を使うロジックに到達した時にエラーとなります。
+    # https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/html/spring-boot-features.html#boot-features-lazy-initialization
+    lazy-initialization: false
+  banner.location: banner-dev.txt

@@ -1,14 +1,14 @@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-Local Environment
+DEV Environment
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-@@@@@@ This is custom banner Start @@@@@@
+$$$$$$ This is custom banner Start $$$$$$
 ${application.version}
 ${application.formatted-version}
 ${spring-boot.version}
 ${spring-boot.formatted-version}
 ${Ansi.NAME} (or ${AnsiColor.NAME}, ${AnsiBackground.NAME}, ${AnsiStyle.NAME})
 ${application.title}
-@@@@@@ This is custom banner End @@@@@@
+$$$$$$ This is custom banner End $$$$$$
