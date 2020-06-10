@@ -18,4 +18,16 @@ public class BookUseCase {
   public Book get(int id) {
     return new Book(id, "book" + id);
   }
+
+  public void regist(Book book) {
+    // 空実装
+  }
+
+  public void update(Book book) {
+    // 空実装
+  }
+
+  public void delete(Integer id) {
+    // 空実装
+  }
 }

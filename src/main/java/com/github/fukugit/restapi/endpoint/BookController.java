@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -38,12 +39,40 @@ public class BookController {
    * @return {@link ResponseEntity}
    */
   @GetMapping("{id}")
-  public ResponseEntity<Book> get(@PathVariable("id") int id) {
+  public ResponseEntity<Book> get(@PathVariable("id") Integer id) {
     return ResponseEntity.status(HttpStatus.OK).body(useCase.get(id));
   }
 
+  /**
+   * 登録します。（メソッドはPOSTです。）
+   * http://localhost:8080/books
+   * @return
+   */
+  @PostMapping
+  public ResponseEntity post(@RequestBody @Validated(BookForm.Insert.class) BookForm book) {
+    useCase.regist(book.toBook());
+    return ResponseEntity.status(HttpStatus.OK).build();
+  }
+
+  /**
+   * 更新します。（メソッドはPUTです。）
+   * http://localhost:8080/books
+   * @return
+   */
   @PutMapping
-  public ResponseEntity put(@RequestBody @Valid Book book) {
+  public ResponseEntity put(@RequestBody @Validated(BookForm.Update.class) BookForm book) {
+    useCase.update(book.toBook());
+    return ResponseEntity.status(HttpStatus.OK).build();
+  }
+
+  /**
+   * 削除します。（メソッドはDELETEです。）
+   * http://localhost:8080/books
+   * @return
+   */
+  @DeleteMapping("{id}")
+  public ResponseEntity delete(@PathVariable("id") Integer id) {
+    useCase.delete(id);
     return ResponseEntity.status(HttpStatus.OK).build();
   }
 
