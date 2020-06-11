@@ -17,23 +17,65 @@ java -jar rest-api-1.0-SNAPSHOT.jar
 
 |  テスト対象API  |  API内容  |  メソッド  |  テスト内容  |  パラメータ  |  期待値  |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-|  http://localhost:8080/books/  |  全件取得  |  GET  |  正常終了  |  -  |  JSON  |
-|  http://localhost:8080/books/1  |  ID検索  |  GET  |  正常終了  |  -  |  JSON  |
-|  http://localhost:8080/books/  |  登録  |  POST  |  正常終了  |  `{ "title":"test" }`  |  -  |
-|  http://localhost:8080/books/  |  登録  |  POST  |  バリデーションエラー  |  `{ }`  |  -  |
-|  http://localhost:8080/books/  |  更新  |  PUT  |  正常終了  |  `{  "id": 1, "title":"test" }`  |  -  |
-|  http://localhost:8080/books/  |  更新  |  PUT  |  バリデーションエラー  |  `{ "title":"test" }`  |  -  |
-|  http://localhost:8080/books/1  |  削除  |  DELETE  |  正常終了  |  -  |  -  |
+|  http://localhost:8080/books/  |  全件取得 |  GET     |  正常終了            |  -  |  [レスポンスデータ](#全件取得のレスポンスデータ)  |
+|  http://localhost:8080/books/1 |  ID検索  |  GET     |  正常終了            |  -  |  [レスポンスデータ](#ID検索のレスポンスデータ)  |
+|  http://localhost:8080/books/  |  登録    |  POST    |  正常終了            |  [テストデータ](#POST正常系のテストデータ) | -  |
+|  http://localhost:8080/books/  |  登録    |  POST    |  バリデーションエラー  |  [テストデータ](#POSTバリデーションエラー系のテストデータ)  |  -  |
+|  http://localhost:8080/books/  |  更新    |  PUT     |  正常終了            |  [テストデータ](#PUT正常系のテストデータ)  |  -  |
+|  http://localhost:8080/books/  |  更新    |  PUT     |  バリデーションエラー  |  [テストデータ](#PUTバリデーションエラー系のテストデータ)  |  -  |
+|  http://localhost:8080/books/1 |  削除    |  DELETE  |  正常終了            |  -  |  -  |
 
-| Status | Response  |
-| ------ | --------- |
-| 200    | `json`                          |
-|        | `   {`                          |
-|        | ` "id": 10,`                    |
-|        | ` "username": "alanpartridge",` |
-|        | ` more code...`                 |
-|        | `}`                             |
-| 400    |                                 |
+### Test data
+#### Request
+##### POST正常系のテストデータ
+```json
+{
+    "title": "test"
+}
+```
+##### POSTバリデーションエラー系のテストデータ
+```json
+{
+}
+```
+##### PUT正常系のテストデータ
+```json
+{
+  "id": 1,
+  "title":"test"
+}
+```
+
+##### PUTバリデーションエラー系のテストデータ
+```json
+{
+  "title":"test"
+}
+```
+
+#### Response
+##### 全件取得のレスポンスデータ
+```json
+[
+    {
+        "id": 1,
+        "title": "book1"
+    },
+    {
+        "id": 2,
+        "title": "book2"
+    }
+]
+```
+
+##### ID検索のレスポンスデータ
+```json
+{
+    "id": 1,
+    "title": "book1"
+}
+```
+
 
 もう一つはJUnitから実行する方法です。 MockMvcを使用しているのでブラウジングテストと同様のテスト（結合テスト）が可能です。  
 * [BookControllerTestを実行します。](src/test/java/com/github/fukugit/restapi/endpoint/BookControllerTest.java)  
