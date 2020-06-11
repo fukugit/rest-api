@@ -25,58 +25,6 @@ java -jar rest-api-1.0-SNAPSHOT.jar
 |  http://localhost:8080/books/  |  更新    |  PUT     |  バリデーションエラー  |  [テストデータ](#PUTバリデーションエラー系のテストデータ)  |  -  |
 |  http://localhost:8080/books/1 |  削除    |  DELETE  |  正常終了            |  -  |  -  |
 
-### Test data
-#### Request
-##### POST正常系のテストデータ
-```json
-{
-    "title": "test"
-}
-```
-##### POSTバリデーションエラー系のテストデータ
-```json
-{
-}
-```
-##### PUT正常系のテストデータ
-```json
-{
-  "id": 1,
-  "title":"test"
-}
-```
-
-##### PUTバリデーションエラー系のテストデータ
-```json
-{
-  "title":"test"
-}
-```
-
-#### Response
-##### 全件取得のレスポンスデータ
-```json
-[
-    {
-        "id": 1,
-        "title": "book1"
-    },
-    {
-        "id": 2,
-        "title": "book2"
-    }
-]
-```
-
-##### ID検索のレスポンスデータ
-```json
-{
-    "id": 1,
-    "title": "book1"
-}
-```
-
-
 もう一つはJUnitから実行する方法です。 MockMvcを使用しているのでブラウジングテストと同様のテスト（結合テスト）が可能です。  
 * [BookControllerTestを実行します。](src/test/java/com/github/fukugit/restapi/endpoint/BookControllerTest.java)  
 
@@ -90,3 +38,54 @@ DependencyについてはPOMを参照して下さい。
 ## Acknowledgments
 RestAPIの設定は [Zalando RESTful API と イベントスキーマのガイドライン](https://restful-api-guidelines-ja.netlify.app/)
 を参考に設計しました。  
+
+## Test data
+### Request
+#### POST正常系のテストデータ
+```json
+{
+    "title": "test"
+}
+```
+#### POSTバリデーションエラー系のテストデータ
+```json
+{
+}
+```
+#### PUT正常系のテストデータ
+```json
+{
+  "id": 1,
+  "title":"test"
+}
+```
+
+#### PUTバリデーションエラー系のテストデータ
+```json
+{
+  "title":"test"
+}
+```
+
+### Response
+#### 全件取得のレスポンスデータ
+```json
+[
+    {
+        "id": 1,
+        "title": "book1"
+    },
+    {
+        "id": 2,
+        "title": "book2"
+    }
+]
+```
+
+#### ID検索のレスポンスデータ
+```json
+{
+    "id": 1,
+    "title": "book1"
+}
+```
